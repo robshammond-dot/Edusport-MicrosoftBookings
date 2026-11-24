@@ -124,6 +124,9 @@
     .faq details{break-inside:avoid;}
     .faq details:not([open]) > *:not(summary){display:block;}
     .rule,.steps li,.watch-item,figure,.tip,.callout,tr{break-inside:avoid;}
+    section + section{break-before:page;}
+    h2,h3,.sub{break-after:avoid; page-break-after:avoid;}
+    .tablewrap{overflow:visible;}
     .hero,.leadstrip,.tip,.pill,tr.grp td{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
   }
 
@@ -409,5 +412,6 @@
 <script>
 {for(const t of document.querySelectorAll('.tablewrap table')){const h=[...t.rows[0].cells].map(c=>c.textContent);for(const r of [...t.rows].slice(1)){if(r.classList.contains('grp'))continue;[...r.cells].forEach((c,i)=>{c.dataset.l=h[i]||''})}}}
 </script>
+<script>window.addEventListener("beforeprint",()=>document.querySelectorAll("details").forEach(d=>d.open=true));</script>
 </body>
 </html>
